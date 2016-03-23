@@ -3825,12 +3825,16 @@ func (p *AuroraSchedulerManagerAddInstancesArgs) Write(oprot thrift.TProtocol) e
 	if err := oprot.WriteStructBegin("addInstances_args"); err != nil {
 		return thrift.PrependError(fmt.Sprintf("%T write struct begin error: ", p), err)
 	}
-	if err := p.writeField1(oprot); err != nil {
-		return err
-	}
-	if err := p.writeField2(oprot); err != nil {
-		return err
-	}
+    if p.Config != nil {
+        if err := p.writeField1(oprot); err != nil {
+            return err
+        }
+    }
+    if p.Lock != nil {
+        if err := p.writeField2(oprot); err != nil {
+            return err
+        }
+    }
 	if err := p.writeField3(oprot); err != nil {
 		return err
 	}

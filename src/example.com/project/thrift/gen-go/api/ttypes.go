@@ -7570,42 +7570,64 @@ func (p *TaskQuery) Write(oprot thrift.TProtocol) error {
 	if err := oprot.WriteStructBegin("TaskQuery"); err != nil {
 		return thrift.PrependError(fmt.Sprintf("%T write struct begin error: ", p), err)
 	}
-	if err := p.writeField2(oprot); err != nil {
-		return err
-	}
-	if err := p.writeField4(oprot); err != nil {
-		return err
-	}
-	if err := p.writeField5(oprot); err != nil {
-		return err
-	}
-	if err := p.writeField7(oprot); err != nil {
-		return err
-	}
-	if err := p.writeField8(oprot); err != nil {
-		return err
-	}
-	if err := p.writeField9(oprot); err != nil {
-		return err
-	}
-	if err := p.writeField10(oprot); err != nil {
-		return err
-	}
-	if err := p.writeField11(oprot); err != nil {
-		return err
-	}
-	if err := p.writeField12(oprot); err != nil {
-		return err
-	}
-	if err := p.writeField13(oprot); err != nil {
-		return err
-	}
-	if err := p.writeField14(oprot); err != nil {
-		return err
-	}
-	if err := oprot.WriteFieldStop(); err != nil {
-		return thrift.PrependError("write field stop error: ", err)
-	}
+    if p.JobName != "" {
+        if err := p.writeField2(oprot); err != nil {
+            return err
+        }
+    }
+    if p.TaskIds != nil {
+        if err := p.writeField4(oprot); err != nil {
+            return err
+        }
+    }
+    if p.Statuses != nil {
+        if err := p.writeField5(oprot); err != nil {
+            return err
+        }
+    }
+    if p.InstanceIds != nil {
+        if err := p.writeField7(oprot); err != nil {
+            return err
+        }
+    }
+    if p.Owner != nil{
+        if err := p.writeField8(oprot); err != nil {
+            return err
+        }
+    }
+    if p.Environment != "" {
+        if err := p.writeField9(oprot); err != nil {
+            return err
+        }
+    }
+    if p.SlaveHosts != nil {
+        if err := p.writeField10(oprot); err != nil {
+            return err
+        }
+    }
+    if p.JobKeys != nil {
+        if err := p.writeField11(oprot); err != nil {
+            return err
+        }
+    }
+    if p.Offset != -1 {
+        if err := p.writeField12(oprot); err != nil {
+            return err
+        }
+    }
+    if p.Limit != -1 {
+        if err := p.writeField13(oprot); err != nil {
+            return err
+        }
+    }
+    if p.Role != "" {
+        if err := p.writeField14(oprot); err != nil {
+            return err
+        }
+    }
+    if err := oprot.WriteFieldStop(); err != nil {
+        return thrift.PrependError("write field stop error: ", err)
+    }
 	if err := oprot.WriteStructEnd(); err != nil {
 		return thrift.PrependError("write struct stop error: ", err)
 	}
